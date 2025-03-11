@@ -5,7 +5,7 @@ clear:
 	rm -rf venv
 
 venv:
-	${PYTHON3} -m venv venv
+	python3 -m venv venv
 
 requirements:
 	${PIP} install -r requirements.txt
@@ -19,8 +19,4 @@ makemigrations:
 migrate:
 	${PYTHON3} project/manage.py migrate
 
-setup:
-	make clear
-	make venv
-	make requirements
-	make migrate
+setup: clear venv requirements migrate
