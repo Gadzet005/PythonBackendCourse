@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: .
+    command: python project/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/backend
+    ports:
+      - "8000:8000" 
+    depends_on:
+      - migrate
+  migrate:
+    build: .
+    command: python project/manage.py migrate
+    volumes:
+      - .:/backend
